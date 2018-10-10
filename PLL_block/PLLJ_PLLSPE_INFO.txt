@@ -1,0 +1,5 @@
+PLL_Name	gerador_clock:gerador_clock_inst|altpll:altpll_component|gerador_clock_altpll:auto_generated|pll1
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

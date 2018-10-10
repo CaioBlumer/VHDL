@@ -1,0 +1,50 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+entity tb_flip_flop is
+
+END tb_flip_flop;
+
+architecture behavioral of tb_flip_flop is
+component flipflop is
+	port(
+			i_CLK : in std_logic;
+			i_D	: in std_logic;
+			i_Q	: out std_logic
+		);
+end component;
+
+	signal w_CLK	: std_logic;
+	signal w_D	: std_logic;
+	signal w_Q	: std_logic;
+	
+begin 
+	UUT : flipflop
+		PORT MAP(
+			i_CLK => w_CLK,
+			i_D	=>	w_D,
+			i_Q	=> W_Q
+		);
+		
+	PROCESS
+	BEGIN
+		W_CLK <= '1';
+		wait for 10 ns;
+		W_CLK <= '0';
+		wait for 10 ns;
+	END PROCESS;
+		
+	PROCESS
+	BEGIN
+		W_D <= '1';	
+		wait for 35 ns;
+		W_D <= '0';
+		wait for 20 ns;
+		W_D <= '1';
+		wait;
+	END PROCESS;
+	
+end behavioral;

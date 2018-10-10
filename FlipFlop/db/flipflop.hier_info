@@ -1,0 +1,7 @@
+|flipflop
+i_CLK => o_Q~reg0.CLK
+i_RST => o_Q~reg0.ACLR
+i_D => o_Q~reg0.DATAIN
+o_Q <= o_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

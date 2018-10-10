@@ -1,0 +1,57 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+entity MUX4X1 is
+
+END MUX4X1;
+
+architecture behavioral of MUX4X1 is
+component MUX4X1 is
+	port(
+			i_A	: in std_logic_vector(7 downto 0);
+			i_B	: in std_logic_vector(7 downto 0);
+			i_C	: in std_logic_vector(7 downto 0);
+			i_D	: in std_logic_vector(7 downto 0);
+			o_S	: out std_logic_vector(7 downto 0);
+			i_sel	: in std_logic_vector(1 downto 0)
+		);
+end component;
+	signal s_A	: std_logic_vector(7 downto 0);
+	signal s_B	: std_logic_vector(7 downto 0);
+	signal s_C	: std_logic_vector(7 downto 0);
+	signal s_D	: std_logic_vector(7 downto 0);
+	signal s_S	: std_logic_vector(7 downto 0);
+	signal s_sel	: std_logic_vector(7 downto 0);
+	s_A <= x"1";
+	s_B <= x"2";
+	s_C <= x"3";
+	s_D <= x"4";
+	
+begin 
+	UUT : MUX4X1
+		PORT MAP(
+			i_A 	=> s_A,
+			i_B 	=> s_B,
+			i_C 	=> s_C,
+			i_D 	=> s_D,
+			i_Sel => s_S
+		);
+	PROCESS
+	BEGIN
+		s_S <= "00";
+		wait for 10 ns;
+		
+		s_S <= "01";
+		wait for 10 ns;
+		
+		s_S <= "10";
+		wait for 10 ns;
+		
+		s_S <= "11";
+		wait;
+	END PROCESS;
+			
+end behavioral;

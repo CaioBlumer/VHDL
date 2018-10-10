@@ -1,0 +1,41 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+entity ULA is
+	generic(p_data	:	integer :=16);
+	port(
+			i_SEL	: in std_logic_vector(2 downto 0);
+			i_RS1	: in std_logic_vector(p_data-1 downto 0);
+			i_RS2	: in std_logic_vector(p_data-1 downto 0);
+			o_ULA	: out std_logic_vector(p_data-1 downto 0)
+	);
+END ULA;
+
+architecture behavioral of ULA is
+
+begin
+	process(i_sel, i_RS1, i_RS2)
+	begin
+		case i_sel is
+			when "000" =>
+				o_ULA <= i_RS1 + i_RS2;
+			when "001" =>
+				o_ULA <= i_RS1 - i_RS2;
+			when "010" =>
+				o_ULA <= i_RS1 AND i_RS2;
+			when "011" =>
+				o_ULA <= i_RS1 OR i_RS2;
+			when "100" =>
+				o_ULA <= i_RS1 XOR i_RS2;
+			when "101" =>
+				o_ULA <= NOT i_RS1;
+			when "110" =>
+				o_ULA <= NOT i_RS2;
+			when others =>
+				o_ULA	<= NOT (i_RS1 + i_RS2);
+		end case;
+	end process;
+end behavioral;

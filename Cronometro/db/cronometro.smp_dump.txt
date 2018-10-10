@@ -1,0 +1,6 @@
+
+State Machine - |cronometro|state
+Name state.st_parado state.st_contar state.st_idle 
+state.st_idle 0 0 0 
+state.st_contar 0 1 1 
+state.st_parado 1 0 1 
